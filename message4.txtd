@@ -1,0 +1,12 @@
+Meilleur score=17 sur une clé=(-23, -45) de taille=2 pour message message4.txt
+"Plus rien ne vous arrête on dirait. Passons donc à la suite.
+
+Le chiffre de César est une exemple de ce qu'on appelle une substitution mono-alphabétique : pour chaque caractère de l'alphabet, on attribue un autre caractère. Notons qu'ici, l'alphabet ne se limite pas nécessairement juste aux lettre mais désigne l'ensemble des symboles possibles dans un message; donc sur ordinateur, notre alphabet contient tous les symboles de l'Unicode, dont les chiffres, les lettres minuscules, majuscules, les espaces, sauts de ligne, ponctuation etc). 
+En termes mathématiques, on effectue une permutation de l'ensemble des symboles de l'alphabet. On vient de voir sur ces quelques exemples que le chiffre de César est obsolète à l'âge des ordinateurs (et même à la main on pourrait l'attaquer et on le faisait dès le IXème siècle). Mais il y a deux axes d'améliorations de l'algorithme :
+toujours en restant sur le principe d'un chiffre mono-alphabétique, on pourrait choisir une permutation des lettres plus complexe qu'un simple décalage. Si on autorise un permutation arbitraire, le nombre de possibilités de clés augmente considérablement. En effet, pour un alphabet à n symboles, il y a n décalages possibles. Et il y a n! (factoriel n) permutations de l'alphabet (ce qui est bien plus grand que n). On verra pourtant que c'est en vérité assez vulnérable.
+on peut choisir une substitution différente selon la position du caractère dans le message. On parlera alors de chiffre poly-alphabétique.
+
+Le message que vous venez de déchiffrer est une exemple simple de chiffre poly-alphabétique. On a choisi d'alterner deux substituons par décalages de manière périodique en fonction de positions paires et impaires. Alterner ainsi des substitutions par décalage de manière périodique est ce qu'on appelle le chiffre de Vigenère. La clé est constituée de la suite des décalages qu'on doit effectuer. Le message suivant est chiffré à l'aide d'un code de Vigenère mais je ne vous dirai pas la longueur de la clé ! À vous d'essayer de la trouver par vous même. Un petit indice, cherchez les répétions de mot long dans le texte chiffré. Que peut-on raisonnablement supposer sur les écarts entre deux répétitions ?
+
+--
+Joël

@@ -1,0 +1,7 @@
+Meilleur score=6 sur une clé=(-38,) de taille=1 pour message message3.txt
+Félicitations. Mais avouons quand même que jusqu'ici c'était un peu trop facile pour vous, n'est-ce pas ? Je sais que vous attendez un véritable défi.
+
+Bon, maintenant que vous maitrisez le déchiffrement du code de César, nous allons nous attaquer à un problème juste un brin plus difficile. Le message suivant a été chiffré selon le code de César, mais avec une petite variante pour corser les choses : chaque caractère en position paire été chiffré avec une certaine clé, et chaque caractère en position impaire avec une seconde clé ! Saurez-vous trouver le message original ?
+
+--
+Joël

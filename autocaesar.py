@@ -12,6 +12,7 @@ coloredlogs.install(fmt='%(asctime)s - %(levelname)s - %(message)s', datefmt='%d
 with open("mots_fr.txt", "r") as f:
     COMMON_WORDS = set(f.read().splitlines())
 
+
 def get_message_score(message: str) -> int:
     score = 0
     for mot in message.split():
@@ -91,10 +92,9 @@ def bruteforce_vignere(message_chiffre, taille_cle=1) -> tuple:
 
     return best_score, best_key, best_message
 
-
 def main_truebruteforce(message_files=None, correct_score=5):
     if message_files is None:
-        message_files = {"message2.txt":(1,1), "message6.txt":(6,15)} # "message3.txt":(1,1), "message4.txt":(2,2), "message5.txt":(3,3),
+        message_files = {"message2.txt": (1, 1), "message6.txt": (6, 15)}  # "message3.txt":(1,1), "message4.txt":(2,2), "message5.txt":(3,3),
 
     for file_name, taille_cle in message_files.items():
         with open(file_name, "r") as f:
@@ -102,7 +102,7 @@ def main_truebruteforce(message_files=None, correct_score=5):
 
         min_taille_cle, max_taille_cle = taille_cle
 
-        for taille_cle in range(min_taille_cle, max_taille_cle+1):
+        for taille_cle in range(min_taille_cle, max_taille_cle + 1):
             best_score, best_key, best_message = bruteforce_vignere(message_chiffre, taille_cle=taille_cle)
             if best_score > 0:
                 logger.info(f"Meilleur score={best_score} sur une clé={best_key} de taille={taille_cle} pour message {file_name}:"
@@ -115,7 +115,8 @@ def main_truebruteforce(message_files=None, correct_score=5):
                         f.write(f"Meilleur score={best_score} sur une clé={best_key} de taille={taille_cle} pour message {file_name}\n" + best_message)
                     break
 
-def get_key_possibilities(part_message_chiffre, essais = 9):
+
+def get_key_possibilities(part_message_chiffre, essais=9):
     SPACE_CHAR = ord(" ")
 
     counter = Counter(part_message_chiffre)
@@ -128,10 +129,7 @@ def get_key_possibilities(part_message_chiffre, essais = 9):
     return cles_possibles
 
 
-
-
 def bruteforce_vigenere_frequency(message_chiffre, taille_cle=3) -> tuple:
-
     # Découpage du message
     cles_possibles = []
 
@@ -162,8 +160,6 @@ def bruteforce_vigenere_frequency(message_chiffre, taille_cle=3) -> tuple:
     return best_score, best_key, best_message
 
 
-
-
 def main_frequency_analysis(message_files=None, correct_score=5):
     if message_files is None:
         message_files = {"message6.txt": (11, 11)}
@@ -174,7 +170,7 @@ def main_frequency_analysis(message_files=None, correct_score=5):
 
         min_taille_cle, max_taille_cle = taille_cle
 
-        for taille_cle in range(min_taille_cle, max_taille_cle+1):
+        for taille_cle in range(min_taille_cle, max_taille_cle + 1):
             best_score, best_key, best_message = bruteforce_vigenere_frequency(message_chiffre, taille_cle=taille_cle)
             if best_score > 0:
                 logger.info(f"Meilleur score={best_score} sur une clé={best_key} de taille={taille_cle} pour message {file_name}:"
@@ -186,7 +182,6 @@ def main_frequency_analysis(message_files=None, correct_score=5):
                     with open(file_name + "d", "w") as f:
                         f.write(f"Meilleur score={best_score} sur une clé={best_key} de taille={taille_cle} pour message {file_name}\n" + best_message)
                     break
-
 
 
 main_frequency_analysis()
