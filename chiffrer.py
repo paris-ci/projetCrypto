@@ -25,5 +25,5 @@ if __name__ == '__main__':
         final.append(hidden_in[i])
         final.append(zwsp * ords[i])
 
-    with open("pour_joel.txt", "w") as f:
+    with open("message7", "w") as f:
         f.write("".join(final))

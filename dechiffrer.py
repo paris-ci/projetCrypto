@@ -6,6 +6,7 @@ from tqdm import trange
 def verification_globale(message):
     return "Joël" in message
 
+
 def rotated_letter(letter, key):
     """Rotates a given letter by a given number.
 
@@ -22,7 +23,6 @@ def rotated_letter(letter, key):
     char = chr(cakASCII)
 
     return char
-
 
 
 class Dechiffreur:
@@ -94,8 +94,6 @@ class Caesar(Dechiffreur):
     #    return "bravo ! vous" in dechiffre.lower() or "félicitations. mais avouons" in dechiffre.lower()
 
 
-
-
 class CaesarBizzare(Dechiffreur):
     def __init__(self, file, intervalle_pair=6, intervalle_impair=6):
         super().__init__(file)
@@ -117,7 +115,6 @@ class CaesarBizzare(Dechiffreur):
 
     # def verifier(self, dechiffre):
     #    return "bravo ! vous" in dechiffre.lower() or "félicitations. mais avouons" in dechiffre.lower()
-
 
 
 class Vigenere(Dechiffreur):
@@ -200,12 +197,10 @@ def trouver_cle(message_chiffre):
     bravo_chiffre = message_chiffre[:len(bravo_en_clair)]
     assert len(bravo_chiffre) == len(bravo_en_clair)
 
-
     for lettre_chiffree, lettre_en_clair in zip(bravo_chiffre, bravo_en_clair):
         decalage = ord(lettre_chiffree) - ord(lettre_en_clair)
 
         print(f"{repr(lettre_chiffree)}->{repr(lettre_en_clair)}\t : {decalage}")
-
 
     print("* Fin (-- Joël)")
     joel_en_clair = "--\nJoël"
@@ -250,24 +245,20 @@ if __name__ == "__main__":
 
     # print(bruteforcer(CaesarBizzare, 'message4.txt', min_=-1024, max_=1025, argument="intervalle_impair", intervalle_pair=-23))
 
-
-
-    #print(bruteforcer(Caesar, 'message5.txt', min_=-0, max_=10, argument="intervalle"))
+    # print(bruteforcer(Caesar, 'message5.txt', min_=-0, max_=10, argument="intervalle"))
     print("Self-Test")
     messages = [
         Scytale('message1.txt', lettres_par_colonne=1532),  # 1
-        Caesar("message2.txt", intervalle=-7),              # 2
-        Caesar("message3.txt", intervalle=-293),            # 3
-        Vigenere("message4.txt", cle=[-23, -45]),           # 4
-        Vigenere("message5.txt", cle=[-2, -9, -3]),         # 5
+        Caesar("message2.txt", intervalle=-7),  # 2
+        Caesar("message3.txt", intervalle=-38),  # 3
+        Vigenere("message4.txt", cle=[-23, -45]),  # 4
+        Vigenere("message5.txt", cle=[-2, -9, -3]),  # 5
     ]
 
     for i, message in enumerate(messages):
-        print(f"M{i+1} -> {message.verifier(message.dechiffrer())}")
+        print(f"M{i + 1} -> {message.verifier(message.dechiffrer())}")
 
     m6 = Vigenere("message6.txt", cle=[-7, -2, -9, -11, -10, -4, -3])
     print(m6.dechiffrer())
 
     message_info("message6.txt")
-
-
