@@ -161,12 +161,19 @@ def bruteforce_vigenere_frequency(message_chiffre, taille_cle=3) -> tuple:
     return best_score, best_key, best_message
 
 
-def main_frequency_analysis(message_files=None, correct_score=100):
+def main_frequency_analysis(message_files=None, correct_score=1000):
+    bornes =  (1, 15)
     if message_files is None:
-        message_files = {"arthur.txt": (1, 15)}
+        message_files = {"arthur.txt":bornes,}
+                         #"antoine.txt": bornes,
+                         #"chloe.txt": bornes,
+                         #"florian.txt": bornes,
+                         #"marine.txt": bornes,
+                         #"pascal.txt": (20, 20),
+                         #"souhila.txt": bornes}
 
     for file_name, taille_cle in message_files.items():
-        with open(file_name, "r", encoding="latin-1") as f:
+        with open(file_name, "r", encoding="utf8") as f:
             message_chiffre = f.read()
 
         min_taille_cle, max_taille_cle = taille_cle
