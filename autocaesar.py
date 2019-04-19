@@ -82,7 +82,7 @@ def bruteforce_vignere(message_chiffre, taille_cle=1) -> tuple:
             if best_score > 4:
                 best_message = dechiffre_vignere(message_chiffre, best_key, max_len=0)
                 score = get_message_score(best_message.lower())
-                if score > 10:
+                if score > 200:
                     break
 
     # logger.debug(f"Clé testée : {cle_test}")
@@ -91,6 +91,7 @@ def bruteforce_vignere(message_chiffre, taille_cle=1) -> tuple:
     best_score = get_message_score(best_message.lower())
 
     return best_score, best_key, best_message
+
 
 def main_truebruteforce(message_files=None, correct_score=5):
     if message_files is None:
@@ -116,7 +117,7 @@ def main_truebruteforce(message_files=None, correct_score=5):
                     break
 
 
-def get_key_possibilities(part_message_chiffre, essais=9):
+def get_key_possibilities(part_message_chiffre, essais=2):
     SPACE_CHAR = ord(" ")
 
     counter = Counter(part_message_chiffre)
@@ -160,12 +161,12 @@ def bruteforce_vigenere_frequency(message_chiffre, taille_cle=3) -> tuple:
     return best_score, best_key, best_message
 
 
-def main_frequency_analysis(message_files=None, correct_score=5):
+def main_frequency_analysis(message_files=None, correct_score=100):
     if message_files is None:
-        message_files = {"message6.txt": (11, 11)}
+        message_files = {"arthur.txt": (1, 15)}
 
     for file_name, taille_cle in message_files.items():
-        with open(file_name, "r") as f:
+        with open(file_name, "r", encoding="latin-1") as f:
             message_chiffre = f.read()
 
         min_taille_cle, max_taille_cle = taille_cle
